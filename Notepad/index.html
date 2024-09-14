@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="notesapp">
+            <h2 id="notes"> Notepad</h2>
+            <div class="row">
+                <button class="btn" onclick="addNotes()"> Creates Notes</button>
+               
+            </div>
+            <div class="textarea">
+               <!--<p contenteditable="true" class="input-box">
+                    <img src="radio.png">
+               </p>
+            -->
+            </div>
+        </div>
+
+    </div>
+    
+
+    <script>
+        const textarea = document.querySelector(".textarea");
+        const CreateBtn = document.querySelector(".btn");
+
+        let notes = document.querySelectorAll(".input-box")
+
+        function addNotes(){
+           
+      
+            
+                let input = document.createElement("p")
+                let img = document.createElement("img")
+
+                input.className = "input-box";
+                input.setAttribute("contenteditable" ,"true")
+                img.src = "radio.png"
+                textarea.appendChild(input).appendChild(img)
+            
+        }
+        
+
+        textarea.addEventListener("click" ,function(e){
+            if(e.target.tagName === "P"){
+                e.target.classList.toggle("radio")
+                saveData()
+                
+            }
+            else if(e.target.tagName === "IMG"){
+                e.target.parentElement.remove();
+                saveData()
+            }
+        },false)
+
+        function saveData(){
+            localStorage.setItem("data" , listContainer.innerHTML);
+        }
+        function showTask(){
+            listContainer.innerHTML = localStorage.getItem("data");
+        }
+        showTask();
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a<br><span> Gaming userName</span></h1>
+        <div class="display">
+            <input type="text" id="userName" placeholder="Username">
+            <img src="image/copy.png" alt="" onclick="copyName()">
+        </div>
+        <button onclick="createUsername()">Generate username</button>
+    </div>
+
+    <script>
+        let userName = document.getElementById("userName")
+       
+        
+        
+        const firstname  = [
+            "TOM",
+            'BlackJack',
+            'Tonia',
+            'ander',
+            'rani',
+            'tabi',
+            'jefferson',
+            'styne',
+            'raider',
+            'dooms',
+            'slade',
+            'stroke'
+        ]
+
+        const number = '0123456789'
+        const specialChar = '!@#$%&*_>?'
+
+        const lastname  = [
+            'wing',
+            'blood',
+            'xris',
+            'bat',
+            'night',
+            'joker',
+            'stein'
+            
+        ]
+
+
+        function createUsername() {
+            let name = '';
+
+            name += specialChar[Math.floor(Math.random() * specialChar.length)]
+            name +=  firstname[Math.floor(Math.random() * firstname.length)] ;
+            name += lastname[Math.floor(Math.random() * lastname.length)]
+            name += number[Math.floor(Math.random() * number.length)]
+
+
+            userName.value = name ;
+        }
+
+        function copyName(){
+            userName.select();
+            document.execCommand('copy')
+
+        }
+    </script>
+</body>
+</html>
